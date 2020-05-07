@@ -31,6 +31,8 @@ echo "Backing up current GRUB config"
 cp -a /target/boot/grub/{grub.cfg,grub-bak.cfg}
 cp -a /target/boot/efi/EFI/BOOT/{grub.cfg,grub-bak.cfg}
 
+set +e
+
 echo
 echo "Entering chroot..."
 chroot /target
