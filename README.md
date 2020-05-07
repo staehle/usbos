@@ -50,7 +50,23 @@ source set-dev.sh
 set-inst-dev /dev/sdb
 ```
 
+This will print out the device info so you can confirm you didn't fat-finger the name.
 
+Now, run `setup-parts.sh` normally.  You can edit the head of this file to stop certain actions from happening (Useful if you are debugging an existing drive created by this):
+
+```bash
+# Steps:
+new_parts=1
+new_luks=1
+new_fs=1
+add_swap=1
+```
+
+Run:
+
+```
+./setup-parts.sh
+```
 
 
 
