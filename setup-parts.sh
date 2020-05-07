@@ -7,6 +7,7 @@
 # https://help.ubuntu.com/community/ManualFullSystemEncryption
 #
 set -e
+source $(realpath $(dirname "${BASH_SOURCE[0]}"))/defines.sh
 
 # Steps:
 new_parts=1
