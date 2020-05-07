@@ -32,6 +32,7 @@ echo "    DM: ${DM}"
 if [ ! -z "$new_parts" ]; then
 	_echo_title "Setting up partitions"
 	sgdisk --zap-all $DEV
+	partprobe
 
 	# Partition setup:
 	# 1: 512M, fat16, ESP

@@ -68,5 +68,7 @@ Run:
 ./setup-parts.sh
 ```
 
+If you run into an error similar to `Error: Partitions(s) on /dev/sdX have been written, but we have been unable to inform the kernel of the change`, then use the GNOME Disks utility to unmount (or lock LUKS) on every partition in that drive.  Then try the script again.
+
 
 
