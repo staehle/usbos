@@ -24,10 +24,16 @@ function _echo_info() {
 	echo -e "$(date +%T)| ${CSTRONG} ~ ${CCYAN}$@${CNORMAL} ~"
 }
 
+function _echo_warn() {
+	echo
+    echo -e "$(date +%T)| ${CSTRONG}${CRED}WARNING:${CNORMAL} ${CYELLOW}$@${CNORMAL}"
+}
+
 function _echo_err() {
 	echo
     echo -e "$(date +%T)| ${CSTRONG}${CRED}ERROR:${CNORMAL} ${CSTRONG}$@${CNORMAL}"
 }
+
 function _echo_confirm() {
 	echo
     echo -e "$(date +%T)| ${CSTRONG}>>> ${CGREEN}$@${CNORMAL} <<< <--"
@@ -58,6 +64,8 @@ function set-inst-dev() {
 	_echo_info "Please confirm this is the correct device:"
 
 	fdisk -l ${DEV}
+
+	_echo_warn "THIS DEVICE WILL BE COMPLETELY OVERWRITTEN!"
 
 	_echo_confirm "If this is correct, continue with the next steps. If not, run this function again with the correct drive next time :)"
 }
