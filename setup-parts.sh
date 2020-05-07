@@ -55,7 +55,7 @@ if [ ! -z "$new_luks" ]; then
 	cryptsetup luksFormat ${DEV}5
 fi
 
-_echo_title "*** Unlocking LUKS"
+_echo_title "Unlocking LUKS"
 #_echo_subtitle "/boot"
 #cryptsetup open ${DEV}2 LUKS_BOOT
 
@@ -66,16 +66,18 @@ _echo_info "Current mappers:"
 ls /dev/mapper/
 
 if [ ! -z "$new_fs" ]; then
-	_echo_title "Creating new filesystems"\
-	#_echo_subtitle "/boot"
-	#mkfs.ext4 -L boot /dev/mapper/LUKS_BOOT
+	_echo_title "Creating new filesystems"
 
 	_echo_subtitle "ESP"
 	mkfs.vfat -F 16 -n ESP ${DEV}1
 
+	_echo_subtitle "/boot"
+	#mkfs.ext4 -L boot /dev/mapper/LUKS_BOOT
+	mkfs.ext4 -L boot ${DEV}2
+
 	_echo_subtitle "LVM"
-	pvcreate /dev/mapper/${DM}_crypt
-	vgcreate ubuntu-vg /dev/mapper/${DM}_crypt
+	pvcreate /dev/mapper/${DM}5_crypt
+	vgcreate ubuntu-vg /dev/mapper/${DM}5_crypt
 
 	if [ ! -z "$add_swap" ]; then
 		_echo_subtitle "swap on LVM"
