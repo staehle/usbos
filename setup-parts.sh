@@ -40,11 +40,11 @@ if [ ! -z "$new_parts" ]; then
 	# 5: remaining, LVM+LUKS
 
 	sgdisk --new=1:0:+512M $DEV
-	sgdisk --new=2:0:+512M $DEV
+	sgdisk --new=2:0:+768M $DEV
 	sgdisk --new=5:0:0 $DEV
 
-	sgdisk --typecode=1:ef00 --typecode=2:8301 --typecode=5:8300
-	sgdisk --change-name=1:ESP --change-name=1:/boot --change-name=2:LVMLUKS $DEV
+	sgdisk --typecode=1:ef00 --typecode=2:8301 --typecode=5:8301 $DEV
+	sgdisk --change-name=1:ESP --change-name=2:/boot --change-name=5:LVMLUKS $DEV
 fi
 
 _echo_info "Our current partitions:"
