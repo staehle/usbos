@@ -70,5 +70,17 @@ Run:
 
 If you run into an error similar to `Error: Partitions(s) on /dev/sdX have been written, but we have been unable to inform the kernel of the change`, then use the GNOME Disks utility to unmount (or lock LUKS) on every partition in that drive.  Then try the script again.
 
+After this is complete, run the Ubuntu Installer.
+
+Once you get to the 'Installation Type' section, select 'Something else'.
+
+Use these settings:
+
+ * Select the root file-system device for formatting (/dev/mapper/ubuntu--vg-root), press the Change button, choose Use As Ext4... and Mount point "/". Also select 'format'.
+ * Select the swap device (/dev/mapper/ubuntu--vg-swap_1), press the Change button, choose Use as swap area
+ * Select the boot file-system device for formatting (/dev/sdb2), press the Change button. choose Use as Ext4... and Mount point "/boot". Also select 'format'.
+ * Select the boot-loader device. Boot-loader device should always be a raw disk not a partition or device-mapper node (e.g. "/dev/sdb", not "/dev/sdb2")
+
+Click 'Install Now' to continue.
 
 

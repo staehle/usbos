@@ -72,9 +72,9 @@ if [ ! -z "$new_fs" ]; then
 	_echo_subtitle "ESP"
 	mkfs.vfat -F 16 -n ESP ${DEV}1
 
-	_echo_subtitle "/boot"
+	#_echo_subtitle "/boot"
 	#mkfs.ext4 -L boot /dev/mapper/LUKS_BOOT
-	mkfs.ext4 -L boot ${DEV}2
+	#mkfs.ext4 -L boot ${DEV}2
 
 	_echo_subtitle "LVM"
 	pvcreate /dev/mapper/${DM}5_crypt
