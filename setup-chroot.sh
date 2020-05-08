@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-
+source $(realpath $(dirname "${BASH_SOURCE[0]}"))/defines.sh
 if [[ -z "$DEV" || -z "$DM" ]]; then
 	echo "Run the other script to get DEV/DM set"
 	exit 1
