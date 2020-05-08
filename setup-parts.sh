@@ -22,7 +22,7 @@ fi
 if [ $(id -u) -ne 0 ]; then
 	_echo_err "you missed the 'sudo -i' step in the README.md!"
 	echo "You should stay in your superuser session the entire time while doing this!"
-	return
+	exit 1
 fi
 
 _echo_title "Setting up device:"

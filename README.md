@@ -83,4 +83,13 @@ Use these settings:
 
 Click 'Install Now' to continue.
 
+Once it completes, do not reboot, but select 'Continue testing'.  We need to fix GRUB:
+
+```
+./setup-chroot.sh
+```
+
+This script will re-mount your install drive's partitions to /target.
+
+It will prompt you to run 2 commands, entering a `chroot` and a `grub-install` command.
 
