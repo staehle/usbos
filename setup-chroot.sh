@@ -18,8 +18,7 @@ _echo_title "Mounting rootfs"
 mount /dev/mapper/ubuntu--vg-root /target
 for n in proc sys dev etc/resolv.conf; do mount --rbind /$n /target/$n; done
 
-umount /target/boot/efi
-umount /target/boot
+umount --recursive /target || true
 
 #mount /dev/mapper/LUKS_BOOT /target/boot
 mount ${DEV}2 /target/boot
