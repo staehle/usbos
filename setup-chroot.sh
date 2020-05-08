@@ -15,10 +15,10 @@ echo "Device: ${DEV}"
 echo "    DM: ${DM}"
 
 _echo_title "Mounting rootfs"
-mount /dev/mapper/ubuntu--vg-root /target
-for n in proc sys dev etc/resolv.conf; do mount --rbind /$n /target/$n; done
-
 umount --recursive /target || true
+
+mount /dev/mapper/ubuntu--vg-root /target || echo "/target already mounted"
+for n in proc sys dev etc/resolv.conf; do mount --rbind /$n /target/$n || true; done
 
 #mount /dev/mapper/LUKS_BOOT /target/boot
 mount ${DEV}2 /target/boot
